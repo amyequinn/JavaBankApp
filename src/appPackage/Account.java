@@ -56,7 +56,7 @@ public class Account {
 			balance -= amount + 5;
 			checkInterest(0);
 			System.out.println("You have withdrawn " + amount + "pounds and incurred a fee of £5");
-			System.out.println("You now have a balance of " + balance);
+			System.out.printf("You now have a balance of £%.2f ", balance);
 	}
 	
 	public void deposit(double amount) {
@@ -70,7 +70,7 @@ public class Account {
 		amount = amount + amount * interest;
 		balance += amount;
 		System.out.println("You have deposited £" + amount + " with an interest rate of " + (interest*100) + "%");
-		System.out.println("You now have a balance of £" + balance);
+		System.out.printf("You now have a balance of £ %.2f", balance);
 	
 	}
 	

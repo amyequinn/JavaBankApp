@@ -16,8 +16,7 @@ public class Menu {
 
 	
 	//instance variables 
-	
-    Scanner keyboard = new Scanner(System.in);
+
 	
 	Bank bank = new Bank();
 	
@@ -50,10 +49,10 @@ public class Menu {
 
 	private void printHeader() {
 	
-		System.out.println("---------------------------");
-		System.out.println("|     Welcome to Amy's    |");
-		System.out.println("|     Awesome Bank App    |");
-		System.out.println("---------------------------");
+		System.out.println(" -----------------------------");
+		System.out.println("|       Welcome to Amy's      |");
+		System.out.println("|       Awesome Bank App      |");
+		System.out.println(" -----------------------------");
 		
 	}
 	
@@ -61,17 +60,18 @@ public class Menu {
 		
 		displayHeader("Please make a selection");
 		
-		System.out.println("1) Create a New Account");
-		System.out.println("2) Make a deposit");
-		System.out.println("3) Make a withdrawl");
-		System.out.println("4) List account balance");
-		System.out.println("0) Exit");
+		System.out.println("\t1) Create a New Account");
+		System.out.println("\t2) Make a deposit");
+		System.out.println("\t3) Make a withdrawl");
+		System.out.println("\t4) List account balance");
+		System.out.println("\t0) Exit");
 		
 	}
 	
 
 	private int getInput() {
 		int choice = -1;
+	    Scanner keyboard = new Scanner(System.in);
 		do {
 			System.out.println("Enter your choice: ");
 			try {
@@ -86,8 +86,9 @@ public class Menu {
 			}
 			
 		}while(choice< 0 || choice > 4);
+	
 		return choice;
-		
+
 	}
 	
 	private void performAction(int choice) throws InvalidAccountTypeException {
@@ -133,17 +134,17 @@ public class Menu {
 					System.out.print(accountTypes.get(i) + " ");
 				}
 				System.out.print(accountTypes.get(accountTypes.size()-1));
-				System.out.print(") ");
+				System.out.print(") : ");
 			}
 			response = input.nextLine();
-			input.close();
+		
 			firstRun = false;
 			if(!choices) {
 				break;
 			}
-			
+		
 		}while(!accountTypes.contains(response));
-
+	
 		return response;
 	}
 	
@@ -154,6 +155,7 @@ public class Menu {
 			System.out.println("Please enter an initial deposit");
 			
 			try {
+			    Scanner keyboard = new Scanner(System.in);
 				initialDeposit = Double.parseDouble(keyboard.nextLine());
 			}catch(NumberFormatException e) {
 				System.out.println("Deposit must be a number");
@@ -211,6 +213,7 @@ public class Menu {
 		System.out.println(question);
 		double amount = 0;
 		try {
+		    Scanner keyboard = new Scanner(System.in);
 			amount = Double.parseDouble(keyboard.nextLine());
 			
 		}catch(NumberFormatException e) {
@@ -242,7 +245,7 @@ public class Menu {
 		displayHeader("List Account Details");
 		int account = selectAccount();
 		if(account >= 0) {	
-			System.out.println(bank.getCustomer(account).basicInfo());
+			displayHeader(bank.getCustomer(account).basicInfo());
 			System.out.println(bank.getCustomer(account).getAccount());
 		}
 	}
@@ -258,13 +261,14 @@ public class Menu {
 			
 				System.out.println("Select an account: ");
 				for(int i =0; i< customers.size(); i++) {
-					System.out.println((i + 1) + ") " +  customers.get(i).basicInfo());
+					System.out.println("\t" + (i + 1) + ") " +  customers.get(i).basicInfo());
 				}
 				
 				int account;
 				System.out.println("\nPlease enter your selection: ");
 				
 				try {
+				    Scanner keyboard = new Scanner(System.in);
 					account = Integer.parseInt(keyboard.nextLine()) - 1;
 					
 				}catch(NumberFormatException e) {

@@ -16,11 +16,8 @@ public class Customer {
 
 	public String basicInfo() {
 		return 
-				" First Name: " + firstName + 
-				" Last Name: " + lastName +
-				" SSN: " + SSN + 
-				" Account Number: " + account.getAccountNum();			
-	}
+				" Account Number: " + account.getAccountNum() +" - Name: " + firstName + " " + lastName;
+}
 	
 	/**
 	 * @return the firstName
